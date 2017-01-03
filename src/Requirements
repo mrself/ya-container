@@ -1,0 +1,14 @@
+General
+	add dependency
+	change dependency
+	get dependency
+	dependency type could be only an object or a function
+
+
+
+Usage
+
+	var container = Container.make()
+	container.add('depName', Depenedency);
+	container.get('depName') === Dependency;
+	container.change('depName', changeFn);

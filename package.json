@@ -1,0 +1,22 @@
+{
+  "name": "ya-container",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Yaroslav Vavrysh <yaruk.my@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "app-module-path": "^2.1.0",
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0",
+    "sinon": "^1.17.6",
+    "sinon-chai": "^2.8.0"
+  },
+  "dependencies": {
+    "extend": "^3.0.0",
+    "inherit-class": "github:mrself/inherit-class#v1.0.0"
+  }
+}
