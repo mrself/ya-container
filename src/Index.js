@@ -1,3 +1,5 @@
+Container.Registarar = require('./Registarar/Index');
+
 function Container () {
 	this.data = {};
 	this.configData = {};
