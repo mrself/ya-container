@@ -5,7 +5,7 @@
   "main": "src/Index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "version": "git co master && git merge develop && git push && git push --tags && git co develop"
+    "postversion": "git co master && git merge develop && git push && git push --tags && git co develop"
   },
   "author": "Yaroslav Vavrysh <yaruk.my@gmail.com>",
   "license": "MIT",
