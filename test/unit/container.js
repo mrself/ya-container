@@ -72,27 +72,3 @@ describe('#_checkType', function() {
 		expect(container._checkType.bind(container, true)).to.throw();
 	});
 });
-
-describe('Plugin', function() {
-	it('#plugin: add a prop to plugins', function() {
-		function Pl () {}
-		Pl._name = 'plugin';
-		container.plugin(Pl);
-		expect(container.plugins).to.eql({plugin: Pl});
-	});
-
-	describe('#runPlugin', function() {
-		it('set container option with options provided', function() {
-			var run = sn.stub();
-			container.plugins.plugin = {run: run};
-			container.runPlugin('plugin');
-			expect(run).to.have.been.calledWith({container: container});
-		});
-		it('set container option with no options provided', function() {
-			var run = sn.stub();
-			container.plugins.plugin = {run: run};
-			container.runPlugin('plugin', {prop: 1});
-			expect(run).to.have.been.calledWith({container: container, prop: 1});
-		});
-	});
-});

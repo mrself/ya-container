@@ -33,16 +33,6 @@ Container.prototype = {
 		if (typeof dep != 'function' && typeof dep != 'object')
 			throw new TypeError('Depenedency type can be an object or a function');
 	},
-
-	plugin: function(plugin) {
-		this.plugins[plugin._name] = plugin;
-	},
-
-	runPlugin: function(name, options) {
-		options = options || {};
-		options.container = this;
-		this.plugins[name].run(options);
-	},
 };
 
 Container.make = function() {
