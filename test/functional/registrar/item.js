@@ -75,4 +75,43 @@ describe('#registerChilds', function() {
 		item.registerChilds();
 		expect(container.data['dep.f2']).to.eql(F2);
 	});
+
+	it('register recursively', function() {
+		function F2() {}
+		dep.value.containerConfig = {
+			childs: [{
+				name: 'f2',
+				value: F2
+			}]
+		};
+		function F3() {}
+		F2.containerConfig = {
+			childs: [{
+				name: 'f3',
+				value: F3
+			}]
+		};
+		function F4() {}
+		F3.containerConfig = {
+			childs: [{
+				name: 'f4',
+				value: F4
+			}]
+		};
+		function F5() {}
+		F4.containerConfig = {
+			childs: [{
+				name: 'f5',
+				value: F5
+			}]
+		};
+		var container = new Container;
+		var item = Item.init(dep, container);
+		item.registerChilds();
+		expect(container.data['dep.f2']).to.eql(F2);
+		expect(container.data['dep.f2.f3']).to.eql(F3);
+		expect(container.data['dep.f2.f3.f4']).to.eql(F4);
+		expect(container.data['dep.f2.f3.f4.f5']).to.eql(F5);
+		item.boot();
+	});
 });

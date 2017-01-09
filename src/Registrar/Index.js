@@ -22,7 +22,6 @@ function Index () {
 	this.addOne = function(options) {
 		var item = Item.init(options, this.container);
 		this.items.push(item);
-		this.items.concat(item.childs);
 	};
 
 	this.load = function() {

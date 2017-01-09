@@ -4,7 +4,6 @@ var Child = require('./Child');
 
 function Item () {
 	var self = this;
-	this.childs = [];
 
 	this.init = function() {
 		this.resolveOptions();
@@ -42,7 +41,7 @@ function Item () {
 	};
 
 	this.boot = function() {
-		if (!this.config.booted || !this.dep.boot) return;
+		if (this.config.booted === false || !this.dep.boot) return;
 		this.dep.boot(this.container);
 	};
 
@@ -64,7 +63,6 @@ function Item () {
 
 	this.initChildItem = function(child) {
 		var item = Item.init(child.getParentDependencyData(), this.container);
-		this.childs.push(item);
 		self.config.dependencies.push(child.getParentContainerData());
 	};
 
