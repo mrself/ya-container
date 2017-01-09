@@ -9,13 +9,13 @@ function Index () {
 	this.run = function() {
 		this.resolveOptions();
 		this.add();
-		this.register();
-		this.boot();
+		this.initItems();
 	};
 
 	this.add = function() {
+		var self = this;
 		this.options.dependencies.forEach(function(dep) {
-			self.addOne(this.options.dependencies[key]);
+			self.addOne(self.options.dependencies[key]);
 		});
 	};
 
@@ -24,9 +24,9 @@ function Index () {
 		this.items.push(item);
 	};
 
-	this.register = function() {
+	this.initItems = function() {
 		this.items.forEach(function(item) {
-			item.register();
+			item.run();
 		});
 	};
 
@@ -51,7 +51,7 @@ Index.defaults = {
 
 Index.run = function(options) {
 	var inst = new this;
-	inst.setOptions();
+	inst.setOptions(options);
 	inst.run();
 	return inst;
 };
