@@ -39,6 +39,7 @@ Container.prototype = {
 	},
 
 	runPlugin: function(name, options) {
+		options = options || {};
 		options.container = this;
 		this.plugins[name].run(options);
 	},
