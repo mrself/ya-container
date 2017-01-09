@@ -10,7 +10,6 @@ function Index () {
 	this.run = function() {
 		this.resolveOptions();
 		this.add();
-		this.initItems();
 	};
 
 	this.add = function() {
@@ -23,11 +22,12 @@ function Index () {
 	this.addOne = function(options) {
 		var item = Item.init(options, this.container);
 		this.items.push(item);
+		this.items.concat(item.childs);
 	};
 
-	this.initItems = function() {
+	this.load = function() {
 		this.items.forEach(function(item) {
-			item.run();
+			item.load();
 		});
 	};
 

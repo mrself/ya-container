@@ -4,16 +4,18 @@ var Child = require('./Child');
 
 function Item () {
 	var self = this;
+	this.childs = [];
 
 	this.init = function() {
 		this.resolveOptions();
 		this.dep.containerConfig = this.dep.containerConfig || {};
 		this.setConfig();
 		this.defineName();
+		this.childNamespace = this.config.childNamespace || this.name;
+		this.register();
 	};
 
-	this.run = function() {
-		this.register();
+	this.load = function() {
 		this.extend();
 		this.setDeps();
 	};
@@ -32,9 +34,10 @@ function Item () {
 	};
 
 	this.extend = function() {
+		var self = this;
 		this.config.extend.forEach(function(options) {
-			var parent = this.container.get(options.name);
-			inherits(this.dep, parent, options.parentName);
+			var parent = self.container.get(options.globalName);
+			inherits(self.dep, parent, options.localName);
 		});
 	};
 
@@ -54,14 +57,14 @@ function Item () {
 
 	this.registerChilds = function() {
 		this.config.childs.forEach(function(child) {
-			var child = Child.make(child, self.name, self.container);
+			var child = Child.make(child, self.childNamespace, self.container);
 			self.initChildItem(child);
 		});
 	};
 
 	this.initChildItem = function(child) {
 		var item = Item.init(child.getParentDependencyData(), this.container);
-		item.run();
+		this.childs.push(item);
 		self.config.dependencies.push(child.getParentContainerData());
 	};
 
