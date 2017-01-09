@@ -16,12 +16,12 @@ function Index () {
 	this.add = function() {
 		var self = this;
 		this.options.dependencies.forEach(function(dep) {
-			self.addOne(self.options.dependencies[key]);
+			self.addOne(dep);
 		});
 	};
 
 	this.addOne = function(options) {
-		var Item = Item.init(options, container);
+		var item = Item.init(options, this.container);
 		this.items.push(item);
 	};
 
@@ -37,7 +37,7 @@ function Index () {
 		});
 	};
 
-	this.setOptions = function() {
+	this.setOptions = function(options) {
 		this.options = extend(true, {}, this.constructor.defaults, options);
 	};
 
