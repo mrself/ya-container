@@ -34,10 +34,6 @@ Container.prototype = {
 			throw new TypeError('Depenedency type can be an object or a function');
 	},
 
-	_getDepId: function(dep) {
-		return dep.name || dep._name;
-	},
-
 	plugin: function(plugin) {
 		this.plugins[plugin._name] = plugin;
 	},
