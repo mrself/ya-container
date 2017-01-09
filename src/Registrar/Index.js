@@ -1,4 +1,5 @@
 var Item = require('./Item');
+var extend = require('extend');
 
 function Index () {
 
