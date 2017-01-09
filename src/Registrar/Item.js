@@ -15,6 +15,7 @@ function Item () {
 	this.run = function() {
 		this.register();
 		this.extend();
+		this.setDeps();
 		this.boot();
 	};
 
@@ -41,6 +42,15 @@ function Item () {
 	this.boot = function() {
 		if (!this.config.booted || !this.dep.boot) return;
 		this.dep.boot(this.container);
+	};
+
+	this.setDeps = function() {
+		var self = this;
+		this.dep.deps = {};
+		this.config.dependencies.forEach(function(options) {
+			var dep = self.container.get(options.globalName);
+			self.dep.deps[options.localName || options.globalName] = dep;
+		});
 	};
 
 	this.registerChilds = function() {
