@@ -1,4 +1,4 @@
-Container.Registarar = require('./Registarar/Index');
+Container.Registarar = require('./Registrar/Index');
 
 function Container () {
 	this.data = {};
