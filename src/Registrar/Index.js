@@ -21,6 +21,7 @@ function Index () {
 
 	this.addOne = function(options) {
 		var item = Item.init(options, this.container);
+		this.items = this.items.concat(item.childs);
 		this.items.push(item);
 	};
 
@@ -32,7 +33,8 @@ function Index () {
 
 	this.boot = function() {
 		this.items.forEach(function(item) {
-			item.boot();
+			if (item.config.booted !== false && item.boot)
+				item.boot();
 		});
 	};
 
