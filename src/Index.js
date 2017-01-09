@@ -3,7 +3,6 @@ Container.Registarar = require('./Registrar/Index');
 function Container () {
 	this.data = {};
 	this.configData = {};
-	this.plugins = {};
 }
 
 Container.prototype = {
