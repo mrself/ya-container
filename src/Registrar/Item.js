@@ -16,7 +16,6 @@ function Item () {
 		this.register();
 		this.extend();
 		this.setDeps();
-		this.boot();
 	};
 
 	this.setConfig = function() {
