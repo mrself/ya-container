@@ -19,7 +19,10 @@ function Child () {
 	};
 
 	this.defineName = function() {
-		this.name = this.options.name || this.dep.getName();
+		if (this.dep.containerConfig && this.dep.containerConfig.name) {
+			this.name = this.dep.containerConfig.name;
+		} else
+			this.name = this.options.name || this.dep._name || this.dep.getName();
 	};
 
 	this.defineContainerName = function() {
