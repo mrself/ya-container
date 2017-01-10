@@ -37,7 +37,7 @@ function Item () {
 		var self = this;
 		this.config.extend.forEach(function(options) {
 			var parent = self.container.get(options.globalName);
-			inherits(self.dep, parent, options.localName);
+			inherits(self.dep, parent, options.localName || options.globalName);
 		});
 	};
 
