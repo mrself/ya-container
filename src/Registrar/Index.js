@@ -33,8 +33,7 @@ function Index () {
 
 	this.boot = function() {
 		this.items.forEach(function(item) {
-			if (item.config.booted !== false && item.boot)
-				item.boot();
+			item.boot();
 		});
 	};
 
