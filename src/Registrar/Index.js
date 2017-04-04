@@ -35,6 +35,7 @@ function Index () {
 		this.items.forEach(function(item) {
 			item.boot();
 		});
+		$(document).trigger('deps:boot.app');
 	};
 
 	this.setOptions = function(options) {
