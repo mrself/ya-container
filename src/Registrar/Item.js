@@ -43,7 +43,7 @@ function Item () {
 
 	this.boot = function() {
 		if (this.config.booted === false || !this.dep.boot) return;
-		this.dep.boot(this.container);
+		this.dep.boot();
 	};
 
 	this.setDeps = function() {
